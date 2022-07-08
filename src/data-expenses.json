@@ -1,0 +1,26 @@
+[
+  {
+"Name": "McDonalds",
+"Type": "Food",
+"Amount": "30",
+"Date": "30-07-2022"
+},
+{
+  "Name": "Uniqlo",
+  "Type": "Others",
+  "Amount": "130",
+  "Date": "29-07-2022"
+},
+{
+  "Name": "Jaya Grocer",
+  "Type": "Others",
+  "Amount": "130",
+  "Date": "10-07-2022"
+},
+{
+  "Name": "Celcom",
+  "Type": "Bill",
+  "Amount": "90",
+  "Date": "10-07-2022"
+}
+]
