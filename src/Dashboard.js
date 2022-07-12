@@ -49,7 +49,7 @@ export default function Dashboard () {
       <WelcomeMsg />
       <Budget />
 
-      <div className="chart" style={{width:'350px',marginLeft:"100px",marginTop:"70px"}}>
+      <div className="chart" style={{width:'450px',marginLeft:"200px",marginTop:"70px"}}>
         <Pie data={state} />
       </div>
     </>
