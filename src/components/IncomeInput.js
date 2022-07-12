@@ -23,7 +23,7 @@ export default function IncomeInput({incomes,getIncomes,month,setMonth,setIncome
       setChannel('')
       setAmount('')
       setDate('')
-      
+      getIncomes()
       
       //window.location = '#/expenses'
       
