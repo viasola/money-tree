@@ -1,6 +1,7 @@
 import React,{Fragment,useState} from "react";
 import { BiEditAlt } from "react-icons/bi";
 import { MdOutlineCloseFullscreen } from "react-icons/md";
+import Moment from "moment";
 
 const EditIncome = ({income,updateExpense}) => {
   
@@ -52,7 +53,7 @@ const EditIncome = ({income,updateExpense}) => {
 
               <input type="number" className="form-control" value={amount} onChange={e => setAmount(e.target.value)}/>
 
-              <input type="date" className="form-control" value={date} onChange={e => setDate(e.target.value)}/>
+              <input type="date" className="form-control" value={Moment(date).format("YYYY-MM-DD")} onChange={e => setDate(e.target.value)}/>
               
 
             </div>
