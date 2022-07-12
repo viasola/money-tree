@@ -36,3 +36,11 @@
     transform: rotate(360deg);
   }
 }
+
+.msg-box {
+  border: 1px solid black;
+}
+
+.bar {
+  background-color: mediumseagreen;
+}
