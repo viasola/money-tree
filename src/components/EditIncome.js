@@ -12,8 +12,8 @@ const EditIncome = ({income,updateIncome}) => {
   function setOriIncome () {
     
     setChannel(income.channel)
-    setDate(income.date)
     setAmount(income.amount)
+    setDate(income.date)
   }
 
   return (
