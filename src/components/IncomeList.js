@@ -5,10 +5,9 @@ import Moment from 'moment';
 
 
 
-export default function IncomeList({props}) {
+export default function IncomeList({incomes,getIncomes,month,setMonth,setIncomes}) {
 
-  const [incomes,setIncomes] = useState([])
-  const [month,setMonth] = useState(0)
+  
 
   //delete function
   const deleteIncome = async(id) => {
@@ -22,19 +21,21 @@ export default function IncomeList({props}) {
     }
   }
 
-  const getIncomes = async() => {
+  const updateExpense = async(channel,amount,date,income) => {
+    
     try {
-      if(month > 0) {
-        const response = await fetch(`http://localhost:8080/incomes/monthly/${month.toString()}`)
-        const jsonData = await response.json()
-        setIncomes(jsonData)
-      } else {
+      const body = {channel,amount,date}
+      const response = await fetch(`http://localhost:8080/incomes/${income.id}`,{
+        method:"PUT",
+        headers:{"Content-Type":"application/json"},
+        body:JSON.stringify(body)
+      })
 
-        const response = await fetch('http://localhost:8080/incomes')
-        const jsonData = await response.json()
-        
-        setIncomes(jsonData)
-      }
+      //window.location.reload()
+      // page will refresh to get latest
+      //how can not refresh???
+      //if refresh will lost my state of month
+
     } catch (error) {
       console.error(error.message)
     }
@@ -42,7 +43,7 @@ export default function IncomeList({props}) {
 
   useEffect(() => {
     getIncomes()
-  },[month,<EditIncome/>,props])
+  },[month])
 
   
   
@@ -87,7 +88,7 @@ export default function IncomeList({props}) {
             
             <td><span>RM</span>{income.amount}</td>
             <td>{Moment(income.date).format("DD MMM YYYY")}</td>
-            <td><EditIncome income={income}/></td>
+            <td><EditIncome income={income} updateExpense={updateExpense}/></td>
             <td>
               <button className="btn btn-danger" onClick={() => deleteIncome(income.id)}><MdDeleteForever/></button>
             </td>

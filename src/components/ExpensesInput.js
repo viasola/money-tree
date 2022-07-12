@@ -2,7 +2,7 @@ import React, { Fragment ,useState} from "react"
 import { GiTakeMyMoney } from "react-icons/gi";
 import { BiAddToQueue } from "react-icons/bi";
 
-export default function ExpensesInput() {
+export default function ExpensesInput({expenses,getExpenses,month,setMonth}) {
 
   const [name,setName] = useState('')
   const [type,setType] = useState('')
@@ -11,7 +11,7 @@ export default function ExpensesInput() {
 
 
   const onSubmit = async(e) => {
-    //e.preventDefault()
+    e.preventDefault()
     try {
       const body = {name,type,amount,date}
       const response = await fetch('http://localhost:8080/expenses',{
@@ -23,7 +23,7 @@ export default function ExpensesInput() {
       setType('')
       setAmount('')
       setDate('')
-      
+      getExpenses()
       
       //window.location = '#/expenses'
       

@@ -2,32 +2,14 @@ import React,{Fragment,useState} from "react";
 import { BiEditAlt } from "react-icons/bi";
 import { MdOutlineCloseFullscreen } from "react-icons/md";
 
-const EditIncome = ({income}) => {
+const EditIncome = ({income,updateExpense}) => {
   
   const [channel,setChannel] = useState(income.channel)
   const [amount,setAmount] = useState(income.amount)
   const [date,setDate] = useState(income.date)
 
   
-  const updateExpense = async(e) => {
-    e.preventDefault()
-    try {
-      const body = {channel,amount,date}
-      const response = await fetch(`http://localhost:8080/incomes/${income.id}`,{
-        method:"PUT",
-        headers:{"Content-Type":"application/json"},
-        body:JSON.stringify(body)
-      })
 
-      //window.location.reload()
-      // page will refresh to get latest
-      //how can not refresh???
-      //if refresh will lost my state of month
-
-    } catch (error) {
-      console.error(error.message)
-    }
-  }
 
   function setOriIncome () {
     
@@ -77,7 +59,7 @@ const EditIncome = ({income}) => {
 
             
             <div class="modal-footer">
-              <button type="button" class="btn btn-warning" data-dismiss="modal" onClick={ e => updateExpense(e)}><BiEditAlt/></button>
+              <button type="button" class="btn btn-warning" data-dismiss="modal" onClick={ () => updateExpense(channel,amount,date)}><BiEditAlt/></button>
               <button type="button" class="btn btn-danger" data-dismiss="modal" onClick={setOriIncome}><MdOutlineCloseFullscreen/></button>
             </div>
 

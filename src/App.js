@@ -20,8 +20,9 @@ function App() {
       <Routes>
         <Route path="expenses" element={<Expenses/>}/>
         <Route path="incomes" element={<Incomes/>}/>     
-        <Route path="goal" element={<Goal/>}/>     
-        <Route path="/home" element={<Dashboard expenses={<Expenses />}/>}/>          
+        <Route path="goal" element={<Goal/>}/>   
+        <Route path="/" element={<Login/>}/>   
+        <Route path="home" element={<Dashboard expenses={<Expenses />}/>}/>          
       </Routes>
       
       
