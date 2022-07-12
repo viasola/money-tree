@@ -2,7 +2,7 @@ import React, { Fragment ,useState} from "react"
 import { GiMoneyStack } from "react-icons/gi";
 import { BiAddToQueue } from "react-icons/bi";
 
-export default function IncomeInput() {
+export default function IncomeInput({incomes,getIncomes,month,setMonth,setIncomes}) {
 
   
   const [channel,setChannel] = useState('')
@@ -11,7 +11,7 @@ export default function IncomeInput() {
 
   
   const onSubmit = async(e) => {
-    //e.preventDefault()
+    e.preventDefault()
     try {
       const body = {channel,amount,date}
       const response = await fetch('http://localhost:8080/incomes',{
@@ -23,6 +23,7 @@ export default function IncomeInput() {
       setChannel('')
       setAmount('')
       setDate('')
+      
       
       //window.location = '#/expenses'
       

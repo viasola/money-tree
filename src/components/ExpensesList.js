@@ -5,10 +5,9 @@ import Moment from 'moment';
 
 
 
-export default function ExpensesList(props) {
+export default function ExpensesList({expenses,getExpenses,setExpenses,month,setMonth}) {
 
-  const [expenses,setExpenses] = useState([])
-  const [month,setMonth] = useState(0)
+  
 
   //delete function
   const deleteExpense = async(id) => {
@@ -23,23 +22,8 @@ export default function ExpensesList(props) {
   }
 
 
-  const getExpenses = async() => {
-    try {
-      if(month > 0) {
-        const response = await fetch(`http://localhost:8080/expenses/monthly/${month.toString()}`)
-        const jsonData = await response.json()
-        setExpenses(jsonData)
-      } else {
 
-        const response = await fetch('http://localhost:8080/expenses')
-        const jsonData = await response.json()
-        
-        setExpenses(jsonData)
-      }
-    } catch (error) {
-      console.error(error.message)
-    }
-  }
+
 
 
   const updateExpense = async(name,type,amount,date,expense) => {
@@ -64,11 +48,9 @@ export default function ExpensesList(props) {
 
   
 
- 
-
   useEffect(() => {
     getExpenses()
-  },[month,props])
+  },[month])
 
   
   
