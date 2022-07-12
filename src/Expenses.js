@@ -11,7 +11,7 @@ export default function Expenses () {
       <div className="container">
 
         <ExpensesInput />
-        <ExpensesList ExpensesInput={<ExpensesInput/>}/>
+        <ExpensesList prop={<ExpensesInput/>}/>
       </div>
     </Fragment>
   )
