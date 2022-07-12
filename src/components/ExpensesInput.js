@@ -9,8 +9,7 @@ export default function ExpensesInput() {
   const [amount,setAmount] = useState('')
   const [date,setDate] = useState('')
 
-  
-  
+
   const onSubmit = async(e) => {
     //e.preventDefault()
     try {

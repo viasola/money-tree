@@ -6,8 +6,6 @@ import ExpensesList from "./components/ExpensesList";
 
 export default function Expenses () {
 
-
-
   return (
     <Fragment>
       <div className="container">
