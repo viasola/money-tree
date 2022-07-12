@@ -19,7 +19,7 @@ export default function Budget () {
   return (
     <>
       <div className="budget" style={{width:"60%", textAlign:"left", marginTop:"60px",marginLeft:"150px"}}>
-        <h3>Current budget balance : RM{budget <= 0? 0 : (budget - expense)} left <span style={{float:"right"}}><EditBudget budget={budget} setBudget={setBudget} className="edit-btn"/></span></h3>
+        <h3>Current budget balance : RM{budget - expense <= 0? 0 : (budget - expense)} left <span style={{float:"right"}}><EditBudget budget={budget} setBudget={setBudget} className="edit-btn"/></span></h3>
         
         
         <div className="bar-wrapper" style={{width:'100%',height:'37px',border:'solid', backgroundColor:'gainsboro'}} min='0'>
