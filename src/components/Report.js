@@ -1,55 +1,141 @@
-import React,{Fragment,useEffect,useState} from "react";
-import { GiMoneyStack } from "react-icons/gi";
+import React, { Fragment, useEffect, useState } from "react";
+import { TbReport } from "react-icons/tb";
+import Moment from 'moment';
 
 
 export default function Report(props) {
-    
-    const [expenses,setExpenses] = useState([])
+  const [expenses, setExpenses] = useState(0);
+  const [incomes, setIncomes] = useState(0);
+  const [incomesArr, setIncomesArr] = useState([]);
+  const [expensesArr, setExpensesArr] = useState([]);
 
-    // const [channel,setChannel] = useState(income.channel)
-    // const [amount,setAmount] = useState(income.amount)
-  
+  // Total Expenses
+  useEffect(() => {
+    let thisMonth = new Date().getMonth() + 1;
 
-    const response = await fetch(`http://localhost:8080/expenses`)
-    const jsonData = await response.json()
-    console.log(response.json())
-    setExpenses(jsonData)
+    fetch(`http://localhost:8080/expenses/monthly/${thisMonth}`)
+      .then((res) => res.json())
+      .then((data) =>
+        data
+          .map((expense) => Number(expense.amount))
+          .reduce((total, amount) => total + amount)
+      )
+      .then((data) => setExpenses(data));
+  }, []);
 
-    
+  // Total Income
+  useEffect(() => {
+    let thisMonth = new Date().getMonth() + 1;
 
+    fetch(`http://localhost:8080/incomes/monthly/${thisMonth}`)
+      .then((res) => res.json())
+      .then((data) =>
+        data
+          .map((income) => Number(income.amount))
+          .reduce((total, amount) => total + amount)
+      )
+      .then((data) => setIncomes(data));
+  }, []);
 
+  //INCOME LISTS
+  useEffect(() => {
+    let thisMonth = new Date().getMonth() + 1;
 
-    return(
-        <Fragment>
-            <h1 className="mt-5"><GiMoneyStack/>      Transaction Report</h1>
+    fetch(`http://localhost:8080/incomes/monthly/${thisMonth}`)
+      .then((res) => res.json())
+      .then((data) => setIncomesArr(data));
+  }, []);
 
-            <div className="report">
-            
-                <div className="Summary" style={{width:'350px',marginLeft:"100px",marginTop:"70px"}}>
-                    <h5>Summary</h5>
-                    <p>Expenses = <span>{expenses}</span></p>
-                    <p>Income</p>
-                    <p>Balance</p>
-                    <p>Total Balance</p>
-                </div>
+//EXPENSES LISTS
+useEffect(() => {
+    let thisMonth = new Date().getMonth() + 1;
 
-                <div className="Income" style={{width:'350px',marginLeft:"100px",marginTop:"70px"}}>
-                    <h5>Income</h5>
-                    <p>Salary</p>
-                    <p>Dividend</p>
-                    <p>Cashback</p>
-                </div>
+    fetch(`http://localhost:8080/expenses/monthly/${thisMonth}`)
+      .then((res) => res.json())
+      .then((data) => setExpensesArr(data));
+  }, []);
 
-                <div className="Income" style={{width:'350px',marginLeft:"100px",marginTop:"70px"}}>
-                    <h5>Expense</h5>
-                    <p>Salary</p>
-                    <p>Dividend</p>
-                    <p>Cashback</p>
-                </div>
+  return (
+    <Fragment>
+      <h1 className="mt-5">
+        <TbReport /> Transaction Report
+      </h1>
 
-            </div>
-        </Fragment>
+      <br />
+
+      <div className="report">
+        <table class="table table-sm">
+          <thead>
+            <tr>
+              <th scope="col">Summary</th>
+              <th scope="col">Amount(MYR)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Income</th>
+              <td>{incomes}</td>
+            </tr>
+            <tr>
+              <th scope="row">Expense</th>
+              <td>{expenses}</td>
+            </tr>
+            <tr>
+              <th scope="row">Balance</th>
+              <td>{incomes - expenses}</td>
+            </tr>
+          </tbody>
+        </table>
+        <br /> <br />
+        <table class="table table-sm">
+          <thead>
+            <tr>
+              <th scope="col">Income</th>
+              <th scope="col">Date</th>
+              <th scope="col">Amount(MYR)</th>
+             
+            </tr>
+          </thead>
+          <tbody>
+         
+                {incomesArr.map(income => 
+                   <tr>
+                <th scope="row">{income.channel}</th>
+              <td>{Moment(income.date).format("DD MMM YYYY")}</td>
+              <td>{income.amount}</td>
+              </tr>
+              )}
         
-    )
-}
+          </tbody>
 
+        </table>
+
+        <br /> <br />
+
+        <table class="table table-sm">
+          <thead>
+            <tr>
+              <th scope="col">Expenses</th>
+              <th scope="col">Date</th>
+              <th scope="col">Amount(MYR)</th>
+            </tr>
+          </thead>
+          <tbody>
+         
+                {expensesArr.map(expense => 
+                   <tr>
+                <th scope="row">{expense.name}</th>
+              <td>{Moment(expense.date).format("DD MMM YYYY")}</td>
+              <td>{expense.amount}</td>
+              </tr>
+              )}
+        
+          </tbody>
+
+        </table>
+
+
+      </div>
+    </Fragment>
+  );
+}

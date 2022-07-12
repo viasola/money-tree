@@ -7,8 +7,12 @@ export default function Budget () {
   let [budget, setBudget] = useState(0)
 
   useEffect(() => {
-      fetch(`http://localhost:8080/expenses/monthly/7`).then(res => res.json()).then(data => data.map(price => Number(price.amount)).reduce((total, price) => total + price)).then(data => setExpense(data))
-    }, [])
+      fetch(`http://localhost:8080/expenses/monthly/7`)
+       .then(res => res.json())
+       .then(data => data.map(price => Number(price.amount))
+       .reduce((total, price) => total + price))
+       .then(data => setExpense(data))
+  }, [])
 
    
     
