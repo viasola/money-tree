@@ -3,19 +3,14 @@ import EditIncome from "./EditIncome";
 import { MdDeleteForever } from "react-icons/md";
 import Moment from 'moment';
 
-
-
 export default function IncomeList({incomes,getIncomes,month,setMonth,setIncomes}) {
-
-  
-
   //delete function
   const deleteIncome = async(id) => {
     try {
       const deleteIncome = await fetch(`http://localhost:8080/incomes/${id}`,{
         method:"DELETE"
       })
-      setIncomes(incomes.filter(income => income.id !== id))
+      // setIncomes(incomes.filter(income => income.id !== id))
     } catch (error) {
       console.error(error.message)
     }

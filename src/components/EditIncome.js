@@ -9,6 +9,27 @@ const EditIncome = ({income,updateIncome}) => {
   const [amount,setAmount] = useState(income.amount)
   const [date,setDate] = useState(income.date)
 
+  
+  const updateExpense = async(e) => {
+    e.preventDefault()
+    try {
+      const body = {channel,amount,date}
+      const response = await fetch(`http://localhost:8080/incomes/${income.id}`,{
+        method:"PUT",
+        headers:{"Content-Type":"application/json"},
+        body:JSON.stringify(body)
+      })
+
+      //window.location.reload()
+      // page will refresh to get latest
+      //how can not refresh???
+      //if refresh will lost my state of month
+
+    } catch (error) {
+      console.error(error.message)
+    }
+  }
+
   function setOriIncome () {
     
     setChannel(income.channel)
