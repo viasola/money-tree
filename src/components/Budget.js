@@ -1,26 +1,27 @@
 import { useState, useEffect } from "react"
+import EditBudget from "./EditBudget"
 
 export default function Budget () {
 
   let [expense, setExpense] = useState([])
-  let [budget, setBudget] = useState(1000)
-  let [width, setWidth] = useState()
+  let [budget, setBudget] = useState(0)
 
   useEffect(() => {
       fetch(`http://localhost:8080/expenses/monthly/7`).then(res => res.json()).then(data => data.map(price => Number(price.amount)).reduce((total, price) => total + price)).then(data => setExpense(data))
     }, [])
 
-  // const getBudget = budget = 0 ? 0 : expense
-  
+   
+    
   return (
     <>
-      <div className="budget" style={{border:"1px solid black",width:"60%", textAlign:"left", marginTop:"50px",marginLeft:"30px"}}>
-        <h3>Current budget balance : RM{budget - expense} left <span style={{float:"right"}}><button className="edit-btn">Edit</button></span></h3>
+      <div className="budget" style={{width:"60%", textAlign:"left", marginTop:"60px",marginLeft:"150px"}}>
+        <h3>Current budget balance : RM{budget <= 0? 0 : (budget - expense)} left <span style={{float:"right"}}><EditBudget budget={budget} setBudget={setBudget} className="edit-btn"/></span></h3>
         
-        <div className="bar-wrapper" style={{width:'100%',height:'25px',border:'solid'}} min='0'>
-          <div className="bar" style={{width:`${(expense / budget * 100)}%`,height:'20px',backgroundColor:"blue"}} min='0'></div>
+        
+        <div className="bar-wrapper" style={{width:'100%',height:'37px',border:'solid', backgroundColor:'gainsboro'}} min='0'>
+          <div className="bar" style={{width: budget <= 0 ? '0%' : `${100 - (expense / budget * 100)}%`,height:'30px',backgroundColor:"gold"}} min='0'></div>
         </div>
-        <span>RM{expense} / RM{budget}</span>
+        <h5>RM{budget === 0 ? 0 : expense} / RM{budget}</h5>
         
       </div>
     </>

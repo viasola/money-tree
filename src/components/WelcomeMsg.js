@@ -1,10 +1,10 @@
 export default function WelcomeMsg () {
   return (
     <>
-      <div className="welcome" style={{border:"1px solid black" ,width:"50%",marginTop:"50px", textAlign:"left",marginLeft:"50px"}}>
+      <div className="welcome" style={{width:"50%",marginTop:"100px", textAlign:"left",marginLeft:"150px"}}>
 
-        <h1>Welcome back</h1>
-        <h3>your overview</h3>
+        <h1>Welcome back XXX!</h1>
+        <h3>your overview for July 2022</h3>
       </div>
     </>
   )
