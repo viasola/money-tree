@@ -5,6 +5,9 @@ import './App.css';
 import { Route,Routes} from 'react-router-dom'
 import Header from './Header';
 import Login from './Login';
+import Goal from './Goal';
+
+
 
 
 function App() {
@@ -16,10 +19,9 @@ function App() {
 
       <Routes>
         <Route path="expenses" element={<Expenses/>}/>
-        <Route path="incomes" element={<Incomes/>}/>          
-        <Route path="home" element={<Dashboard expenses={<Expenses />}/>}/>  
-        <Route path="/" element={<Login/>}/>          
-        
+        <Route path="incomes" element={<Incomes/>}/>     
+        <Route path="goal" element={<Goal/>}/>     
+        <Route path="/home" element={<Dashboard expenses={<Expenses />}/>}/>          
       </Routes>
       
       

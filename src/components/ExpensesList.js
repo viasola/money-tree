@@ -5,7 +5,7 @@ import Moment from 'moment';
 
 
 
-export default function ExpensesList({props}) {
+export default function ExpensesList(props) {
 
   const [expenses,setExpenses] = useState([])
   const [month,setMonth] = useState(0)
@@ -21,6 +21,7 @@ export default function ExpensesList({props}) {
       console.error(error.message)
     }
   }
+
 
   const getExpenses = async() => {
     try {
@@ -40,9 +41,34 @@ export default function ExpensesList({props}) {
     }
   }
 
+
+  const updateExpense = async(name,type,amount,date,expense) => {
+    
+    try {
+      const body = {name,type,amount,date}
+      const response = await fetch(`http://localhost:8080/expenses/${expense.id}`,{
+        method:"PUT",
+        headers:{"Content-Type":"application/json"},
+        body:JSON.stringify(body)
+      })
+      getExpenses()
+      //window.location.reload()
+      // page will refresh to get latest
+      //how can not refresh???
+      //if refresh will lost my state of month
+
+    } catch (error) {
+      console.error(error.message)
+    }
+  }
+
+  
+
+ 
+
   useEffect(() => {
     getExpenses()
-  },[month,<EditExpense/>,props])
+  },[month,props])
 
   
   
@@ -88,7 +114,7 @@ export default function ExpensesList({props}) {
             <td>{expense.type}</td>
             <td><span>RM</span>{expense.amount}</td>
             <td>{Moment(expense.date).format("DD MMM YYYY")}</td>
-            <td><EditExpense expense={expense}/></td>
+            <td><EditExpense expense={expense} updateExpense={updateExpense}/></td>
             <td>
               <button className="btn btn-danger" onClick={() => deleteExpense(expense.id)}><MdDeleteForever/></button>
             </td>

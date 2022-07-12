@@ -24,6 +24,7 @@ export default function ExpensesInput() {
       setAmount('')
       setDate('')
       
+      
       //window.location = '#/expenses'
       
     } catch (error) {
