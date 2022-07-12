@@ -3,14 +3,11 @@ import { BiEditAlt } from "react-icons/bi";
 import { MdOutlineCloseFullscreen } from "react-icons/md";
 import Moment from "moment";
 
-const EditIncome = ({income,updateExpense}) => {
+const EditIncome = ({income,updateIncome}) => {
   
   const [channel,setChannel] = useState(income.channel)
   const [amount,setAmount] = useState(income.amount)
   const [date,setDate] = useState(income.date)
-
-  
-
 
   function setOriIncome () {
     
@@ -60,7 +57,7 @@ const EditIncome = ({income,updateExpense}) => {
 
             
             <div class="modal-footer">
-              <button type="button" class="btn btn-warning" data-dismiss="modal" onClick={ () => updateExpense(channel,amount,date)}><BiEditAlt/></button>
+              <button type="button" class="btn btn-warning" data-dismiss="modal" onClick={ () => updateIncome(channel,amount,date,income)}><BiEditAlt/></button>
               <button type="button" class="btn btn-danger" data-dismiss="modal" onClick={setOriIncome}><MdOutlineCloseFullscreen/></button>
             </div>
 

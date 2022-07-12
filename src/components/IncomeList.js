@@ -21,7 +21,7 @@ export default function IncomeList({incomes,getIncomes,month,setMonth,setIncomes
     }
   }
 
-  const updateExpense = async(channel,amount,date,income) => {
+  const updateIncome = async(channel,amount,date,income) => {
     
     try {
       const body = {channel,amount,date}
@@ -30,7 +30,7 @@ export default function IncomeList({incomes,getIncomes,month,setMonth,setIncomes
         headers:{"Content-Type":"application/json"},
         body:JSON.stringify(body)
       })
-
+      getIncomes()
       //window.location.reload()
       // page will refresh to get latest
       //how can not refresh???
@@ -88,7 +88,7 @@ export default function IncomeList({incomes,getIncomes,month,setMonth,setIncomes
             
             <td><span>RM</span>{income.amount}</td>
             <td>{Moment(income.date).format("DD MMM YYYY")}</td>
-            <td><EditIncome income={income} updateExpense={updateExpense}/></td>
+            <td><EditIncome income={income} updateIncome={updateIncome}/></td>
             <td>
               <button className="btn btn-danger" onClick={() => deleteIncome(income.id)}><MdDeleteForever/></button>
             </td>
