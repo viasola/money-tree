@@ -4,10 +4,7 @@ import { MdDeleteForever } from "react-icons/md";
 import Moment from 'moment';
 
 
-
 export default function ExpensesList({expenses,getExpenses,setExpenses,month,setMonth}) {
-
-  
 
   //delete function
   const deleteExpense = async(id) => {
@@ -20,11 +17,6 @@ export default function ExpensesList({expenses,getExpenses,setExpenses,month,set
       console.error(error.message)
     }
   }
-
-
-
-
-
 
   const updateExpense = async(name,type,amount,date,expense) => {
     
