@@ -12,8 +12,8 @@ export default function Dashboard() {
   const [breakdown,setBreakdown] = useState([])
 
   useEffect(() => {
-  //  fetch('http://localhost:8080/expenses/categories')
-   fetch('http://localhost:8080/expenses/monthly/7')
+    fetch('http://localhost:8080/expenses/categories/7')
+   //fetch('http://localhost:8080/expenses/monthly/7')
    .then(res => res.json())
    .then(data => setBreakdown(data))
    
@@ -38,7 +38,7 @@ export default function Dashboard() {
         '#4B5000',
         
         ],
-        data: breakdown.map(data => data.amount)
+        data: breakdown.map(data => data.total)
       }
     ]
   }
