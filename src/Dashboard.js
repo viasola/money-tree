@@ -12,7 +12,8 @@ export default function Dashboard() {
   const [breakdown,setBreakdown] = useState([])
 
   useEffect(() => {
-   fetch('http://localhost:8080/expenses/categories')
+  //  fetch('http://localhost:8080/expenses/categories')
+   fetch('http://localhost:8080/expenses/monthly/7')
    .then(res => res.json())
    .then(data => setBreakdown(data))
    
@@ -37,7 +38,7 @@ export default function Dashboard() {
         '#4B5000',
         
         ],
-        data: breakdown.map(data => data.total)
+        data: breakdown.map(data => data.amount)
       }
     ]
   }
@@ -48,7 +49,8 @@ export default function Dashboard() {
       <WelcomeMsg />
       <Budget />
 
-      <div className="chart" style={{width:'450px',marginLeft:"200px",marginTop:"70px"}}>
+        <h3 style={{textAlign:"left", marginTop:"60px",marginLeft:"150px",fontWeight:"bold"}}>Expenses for July 2022</h3>
+      <div className="chart" style={{width:'450px',marginLeft:"200px"}}>
         <Pie data={state} />
       </div>
     </>
