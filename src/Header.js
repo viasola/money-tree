@@ -33,6 +33,8 @@ export default function Header() {
           </li>
         </ul>
 
+        
+        <button type="button" class="btn btn-info .btn-sm">Log Out</button>
         {/* <div className="login-status"><h6>LOGGED IN</h6></div> */}
       </nav>
    
