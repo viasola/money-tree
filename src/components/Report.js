@@ -88,21 +88,20 @@ export default function Report(props) {
       .then((data) => setExpensesArr(data));
   }, [displayMonth]);
 
-  let changeColour = expensesArr.map(function(elem) {
+  // CATERGORY COLOR ASSIGNMENT - Expenses
+  function changeExpenseColour(elem) {
     if (elem.type === 'Food'){
-         return 'table-success'
+        return 'table-success'
       } else if (elem.type === 'Transport'){
+        return 'table-warning'
+      } else if (elem.type === 'Debt/Bank/CreditCard'){
         return 'table-danger'
-      } else if (elem.type === 'Debt/Bank/CreditCard'){
-        return 'table-warning'
-      } else if (elem.type === 'Debt/Bank/CreditCard'){
-        return 'table-warning'
       } else if (elem.type === 'Personal Spending'){
         return 'table-warning'
       } else {
         return "table-secondary"
       }
-    })
+    }
     
   // PRINTING BUTTON
   const handlePrint = () => {
@@ -182,7 +181,7 @@ export default function Report(props) {
           <tbody>
            
             {expensesArr.map((expense) => (
-              <tr class={changeColour}>
+              <tr className={changeColour(expense)}>
                 <th scope="row">{expense.name}</th>
                 <td> {Moment(expense.date).format("DD MMM YYYY")}</td>
                 <td>{expense.amount}</td>
