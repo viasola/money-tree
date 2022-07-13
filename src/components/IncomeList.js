@@ -61,7 +61,7 @@ export default function IncomeList({incomes,getIncomes,month,setMonth,setIncomes
       <option name="December" value="12">December</option>
     </select>
 
-    <table className="table mt-5 text-center w-auto ">
+    <table className="table mt-5 text-center  ">
       <thead>
         <tr>
           <th>Channel</th>         

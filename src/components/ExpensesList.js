@@ -65,7 +65,7 @@ export default function ExpensesList({expenses,getExpenses,setExpenses,month,set
       <option name="December" value="12">December</option>
     </select>
 
-    <table className="table mt-5 text-center w-auto ">
+    <table className="table mt-5 text-center  ">
       <thead>
         <tr>
           <th>Name</th>
