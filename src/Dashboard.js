@@ -43,8 +43,7 @@ export default function Dashboard() {
   }
 
   return (
-
-    
+  
     <>
       <WelcomeMsg />
       <Budget />
