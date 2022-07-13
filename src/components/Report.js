@@ -181,7 +181,7 @@ export default function Report(props) {
           <tbody>
            
             {expensesArr.map((expense) => (
-              <tr className={changeColour(expense)}>
+              <tr className={changeExpenseColour(expense)}>
                 <th scope="row">{expense.name}</th>
                 <td> {Moment(expense.date).format("DD MMM YYYY")}</td>
                 <td>{expense.amount}</td>
