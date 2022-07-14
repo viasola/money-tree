@@ -27,6 +27,8 @@ export default function Header() {
               <a class="dropdown-item" href="#/expenses">Expenses</a>
               <a class="dropdown-item" href="#/incomes">Incomes</a>
               <a class="dropdown-item" href="#/transaction-report">Transaction Report</a>
+              <a class="dropdown-item" href="#/goal">Goals</a>
+
             </div>
           </li>
         </ul>

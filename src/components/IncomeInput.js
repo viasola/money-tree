@@ -39,20 +39,8 @@ export default function IncomeInput({incomes,getIncomes,month,setMonth,setIncome
       <form className="d-flex mt-5" onSubmit={onSubmit}>
 
         <input type="text" className="form-control" value={channel} onChange={e => setChannel(e.target.value)} minLength="2" placeholder="Income Channel" required/>
-
-        {/* <select className="form-control" value={type} onChange={e => setType(e.target.value)} required >
-          <option placeholder="Type of expense" value=""></option>
-          <option value="Food">Food</option>
-          <option value="Transport">Transport</option>
-          <option value="Debt/Bank/CreditCard">Debt/Bank/CreditCard</option>
-          <option value="Personal Spending">Personal Spending</option>
-          <option value="Others">Others</option>
-        </select> */}
-
         <input type="number" className="form-control" value={amount} onChange={e => setAmount(e.target.value)}  required min="0" placeholder="Amount"/>
-
         <input type="date" className="form-control" value={date} onChange={e => setDate(e.target.value)} min="2020-01-02" required/>
-
         <button className="btn btn-success"><BiAddToQueue/></button>
 
       </form>
