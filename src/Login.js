@@ -5,43 +5,71 @@ import { SiGmail } from "react-icons/si";
 export default function Login() {
   return (
     <div className="login-container">
-      <div className="login-section">
-        <div className="sub-login-section">
-          <h3>WELCOME TO</h3>
-          <h3>MONEY TREE</h3>
-          <div className="input-group">
-            <input type="text" id="name" placeholder=" " />
-            <label for="name">Username: </label>
-            {/* <input type="email" /> */}
-          </div>
-          <br />
-          <label htmlFor="">Password: </label>
-          <input type="password" />
-          <br />
-          <button type="button" class="btn btn-outline-info">
-            <a href="#/home">
-              <strong>LOG IN</strong>
-            </a>
-          </button>
-
-          <br />
-          <a href="#">SIGN UP FOR FREE</a>
+      <div class="container" id="container">
+        <div class="form-container sign-up-container">
+          <form className="sign-in-form" action="#">
+            <h1>Create Account</h1>
+            <div class="social-container">
+              <a href="#" class="social">
+                <i class="fab fa-facebook-f"></i>
+              </a>
+              <a href="#" class="social">
+                <i class="fab fa-google-plus-g"></i>
+              </a>
+              <a href="#" class="social">
+                <i class="fab fa-linkedin-in"></i>
+              </a>
+            </div>
+            <span className="login-span">or use your email for registration</span>
+            <input type="text" className="sign-in-page-input" placeholder="Name" />
+            <input type="email" className="sign-in-page-input" placeholder="Email" />
+            <input type="password" className="sign-in-page-input" placeholder="Password" />
+            <button className="login-screen-buttons">Sign Up</button>
+          </form>
         </div>
-        <div className="socials-container">
-          <div className="gmail">
-            <SiGmail />
-            Log in from Gmail
-          </div>
-          <div className="facebook">
-            <BsFacebook />
-            Log in from Facebook
-          </div>
-          <div className="twitter">
-            <BsTwitter />
-            Log in from Twitter
+        <div class="form-container sign-in-container">
+          <form className="sign-in-form" action="#">
+            <h1>Sign in</h1>
+            <div class="social-container">
+              <a href="#" class="social">
+                <i class="fab fa-facebook-f"></i>
+              </a>
+              <a href="#" class="social">
+                <i class="fab fa-google-plus-g"></i>
+              </a>
+              <a href="#" class="social">
+                <i class="fab fa-linkedin-in"></i>
+              </a>
+            </div>
+            <span>or use your account</span>
+            <input type="email" className="sign-in-page-input" placeholder="Email" />
+            <input type="password" className="sign-in-page-input" placeholder="Password" />
+            <a href="#">Forgot your password?</a>
+            <button className="login-screen-buttons">Sign In</button>
+          </form>
+        </div>
+        <div class="overlay-container">
+          <div class="overlay">
+            <div class="overlay-panel overlay-left">
+              <h1>Welcome Back!</h1>
+              <p>
+                To keep connected with us please login with your personal info
+              </p>
+              <button class="ghost" id="signIn">
+                Sign In
+              </button>
+            </div>
+            <div class="overlay-panel overlay-right">
+              <h1>Hello, Friend!</h1>
+              <p>Enter your personal details and start journey with us</p>
+              <button class="ghost" id="signUp">
+                Sign Up
+              </button>
+            </div>
           </div>
         </div>
       </div>
     </div>
   );
 }
+

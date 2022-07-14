@@ -35,13 +35,14 @@ export default function IncomeInput({incomes,getIncomes,month,setMonth,setIncome
 
   return (
     <Fragment>
-      <h1 className="mt-5"><GiMoneyStack/>      Incomes</h1>
-      <form className="d-flex mt-5" onSubmit={onSubmit}>
+      <h1 className="income mt-5"><GiMoneyStack/>      Income</h1>
+      <form className="income d-flex mt-5" onSubmit={onSubmit}>
 
         <input type="text" className="form-control" value={channel} onChange={e => setChannel(e.target.value)} minLength="2" placeholder="Income Channel" required/>
         <input type="number" className="form-control" value={amount} onChange={e => setAmount(e.target.value)}  required min="0" placeholder="Amount"/>
         <input type="date" className="form-control" value={date} onChange={e => setDate(e.target.value)} min="2020-01-02" required/>
-        <button className="btn btn-success"><BiAddToQueue/></button>
+
+        <button className="income-btn btn-success"><BiAddToQueue/></button>
 
       </form>
     </Fragment>
