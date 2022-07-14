@@ -7,7 +7,7 @@ export default function EditBudget({budget,setBudget,updateBudget,id}) {
 
   return (
   <>
-    <div class="container">
+    <div class="edit-container">
       <button type="button" class="btn btn-primary" data-toggle="modal" data-target={`#id${id}`}>
         Edit
       </button>

@@ -1,5 +1,5 @@
 import React from 'react';
-import  './Dashboard.css';
+// import  './Dashboard.css';
 import WelcomeMsg from './components/WelcomeMsg';
 import Budget from './components/Budget';
 import { useEffect } from "react";
@@ -44,15 +44,17 @@ export default function Dashboard() {
   }
 
   return (
-  
+    <div className='container'>
+
     <>
       <WelcomeMsg />
       <Budget />
 
         <h3 style={{textAlign:"left", marginTop:"60px",marginLeft:"150px",fontWeight:"bold"}}>Expenses for July 2022</h3>
-      <div className="chart" style={{width:'450px',marginLeft:"200px"}}>
-        <Pie data={state} />
+      <div className="chart" style={{width:'450px',marginLeft:"150px"}}>
+        <Pie data={state} style={{ width: ' ' }} />
       </div>
     </>
+    </div>
   )
 }

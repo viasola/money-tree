@@ -35,12 +35,12 @@ export default function ExpensesInput({expenses,getExpenses,month,setMonth}) {
 
   return (
     <Fragment>
-      <h1 className="mt-5"><GiTakeMyMoney/>      Expenses</h1>
-      <form className="d-flex mt-5" onSubmit={onSubmit}>
+      <h1 className="expenses mt-5"><GiTakeMyMoney/>      Expenses</h1>
+      <form className="expenses form d-flex mt-5" onSubmit={onSubmit}>
 
-        <input type="text" className="form-control" value={name} onChange={e => setName(e.target.value)} minLength="2" placeholder="Name of expense" required/>
+        <input type="text" className="expenses form-control" value={name} onChange={e => setName(e.target.value)} minLength="2" placeholder="Name of expense" required/>
 
-        <select className="form-control" value={type} onChange={e => setType(e.target.value)} required >
+        <select className="expenses form-control" value={type} onChange={e => setType(e.target.value)} required >
           <option placeholder="Type of expense" value=""></option>
           <option value="Food">Food</option>
           <option value="Transport">Transport</option>
@@ -49,11 +49,11 @@ export default function ExpensesInput({expenses,getExpenses,month,setMonth}) {
           <option value="Others">Others</option>
         </select>
 
-        <input type="number" className="form-control" value={amount} onChange={e => setAmount(e.target.value)}  required min="0"placeholder="Amount"/>
+        <input type="number" className="expenses form-control" value={amount} onChange={e => setAmount(e.target.value)}  required min="0"placeholder="Amount"/>
 
-        <input type="date" className="form-control" value={date} onChange={e => setDate(e.target.value)} min="2020-01-02" required/>
+        <input type="date" className="expenses form-control" value={date} onChange={e => setDate(e.target.value)} min="2020-01-02" required/>
 
-        <button className="btn btn-success"><BiAddToQueue/></button>
+        <button className="expenses-btn btn-success"><BiAddToQueue/></button>
 
       </form>
     </Fragment>
