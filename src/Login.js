@@ -45,7 +45,7 @@ export default function Login() {
             <input type="email" className="sign-in-page-input" placeholder="Email" />
             <input type="password" className="sign-in-page-input" placeholder="Password" />
             <a href="#">Forgot your password?</a>
-            <button className="login-screen-buttons">Sign In</button>
+            <button className="login-screen-buttons"> <a href="#/home">Sign In</a> </button>
           </form>
         </div>
         <div class="overlay-container">
